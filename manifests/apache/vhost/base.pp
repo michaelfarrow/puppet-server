@@ -3,7 +3,8 @@ class server::apache::vhost::base {
 	apache::vhost { "${fqdn}":
 		servername  => "${fqdn}",
 		docroot     => '/var/www/',
-		port => '80',
+		port        => '80',
+		directoryindex => 'index.html index.php',
 		rewrites    => [
 			{
 				comment      => 'Rewrite www to non www',

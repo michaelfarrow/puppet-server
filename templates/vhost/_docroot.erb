@@ -1,0 +1,8 @@
+
+  ## Vhost docroot
+<% if @virtual_docroot -%>
+  UseCanonicalName Off
+  VirtualDocumentRoot "<%= @virtual_docroot %>"
+<% else -%>
+  DocumentRoot "<%= @docroot %>"
+<% end -%>

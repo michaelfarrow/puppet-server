@@ -6,4 +6,6 @@ class server::apache {
 	  default_confd_files => false,
 	}
 
+	include apache::mod::dir
+
 }
