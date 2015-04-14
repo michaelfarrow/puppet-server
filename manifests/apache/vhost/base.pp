@@ -1,8 +1,10 @@
-class server::apache::vhost::base {
+class server::apache::vhost::base (
+	$docroot = '/var/www/'
+) {
 
 	apache::vhost { "${fqdn}":
 		servername  => "${fqdn}",
-		docroot     => '/var/www/',
+		docroot     => $docroot,
 		port        => '80',
 		directoryindex => 'index.html index.php',
 		override    => 'All',
