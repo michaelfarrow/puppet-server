@@ -5,6 +5,7 @@ class server::apache::vhost::base {
 		docroot     => '/var/www/',
 		port        => '80',
 		directoryindex => 'index.html index.php',
+		override    => 'All',
 		rewrites    => [
 			{
 				comment      => 'Rewrite www to non www',
