@@ -1,5 +1,5 @@
 class server::apache::vhost::base (
-	$docroot = '/var/www/'
+	$docroot = '/var/www/vhosts/default'
 ) {
 
 	apache::vhost { "${fqdn}":
