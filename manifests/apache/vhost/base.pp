@@ -6,7 +6,9 @@ class server::apache::vhost::base (
 
 	file { '/var/www/vhosts':
 		ensure => directory,
-		owner  => 'www-data'
+		owner  => 'www-data',
+		group  => 'www-data',
+		mode   => '0664',
 	} ->
 
 	apache::vhost { "${fqdn}":
