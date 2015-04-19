@@ -6,8 +6,8 @@ class server::apache::vhost::base (
 
 	file { '/var/www/vhosts':
 		ensure => directory,
-		owner  => 'www-data',
-		group  => 'www-data',
+		owner  => hiera('apache::user', 'www-data'),
+		group  => hiera('apache::group', 'www-data'),
 		mode   => '0664',
 	} ->
 
