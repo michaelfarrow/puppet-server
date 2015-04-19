@@ -2,8 +2,11 @@ class server::apache::vhost::base (
 	$docroot = '/var/www/vhosts/default'
 ) {
 
+	Class['apache'] ->
+
 	file { '/var/www/vhosts':
 		ensure => directory,
+		owner  => 'www-data'
 	} ->
 
 	apache::vhost { "${fqdn}":
