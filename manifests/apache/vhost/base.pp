@@ -2,6 +2,10 @@ class server::apache::vhost::base (
 	$docroot = '/var/www/vhosts/default'
 ) {
 
+	file { '/var/www/vhosts':
+		ensure => directory,
+	} ->
+
 	apache::vhost { "${fqdn}":
 		servername  => "${fqdn}",
 		docroot     => $docroot,
