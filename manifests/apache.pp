@@ -26,36 +26,36 @@ class server::apache (
 		command => "/var/www/cron minutely",
 		user    => $::apache::params::user,
 		minute  => '*',
-	} ->
-
-	cron { 'vhost cron hourly':
-		command => "/var/www/cron hourly",
-		user    => $::apache::params::user,
-		minute  => 1,
-	} ->
-
-	cron { 'vhost cron daily':
-		command => "/var/www/cron daily",
-		user    => $::apache::params::user,
-		minute  => 2,
-		hour    => 4,
-	} ->
-
-	cron { 'vhost cron weekly':
-		command => "/var/www/cron weekly",
-		user    => $::apache::params::user,
-		minute  => 22,
-		hour    => 4,
-		weekday => 0,
-	} ->
-
-	cron { 'vhost cron monthly':
-		command  => "/var/www/cron monthly",
-		user     => $::apache::params::user,
-		minute   => 24,
-		hour     => 4,
-		monthday => 1,
 	}
+
+	# cron { 'vhost cron hourly':
+	# 	command => "/var/www/cron hourly",
+	# 	user    => $::apache::params::user,
+	# 	minute  => 1,
+	# } ->
+
+	# cron { 'vhost cron daily':
+	# 	command => "/var/www/cron daily",
+	# 	user    => $::apache::params::user,
+	# 	minute  => 2,
+	# 	hour    => 4,
+	# } ->
+
+	# cron { 'vhost cron weekly':
+	# 	command => "/var/www/cron weekly",
+	# 	user    => $::apache::params::user,
+	# 	minute  => 22,
+	# 	hour    => 4,
+	# 	weekday => 0,
+	# } ->
+
+	# cron { 'vhost cron monthly':
+	# 	command  => "/var/www/cron monthly",
+	# 	user     => $::apache::params::user,
+	# 	minute   => 24,
+	# 	hour     => 4,
+	# 	monthday => 1,
+	# }
 
 	include apache::mod::dir
 
