@@ -19,8 +19,7 @@ class server::apache (
 	file { '/var/www/cron':
 		ensure => present,
 		source => 'puppet:///modules/server/cron',
-		owner  => $::apache::params::user,
-		group  => $::apache::params::group,
+		mode   => '0777'
 	} ->
 
 	cron { 'vhost cron minutely':
