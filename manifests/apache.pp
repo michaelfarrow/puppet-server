@@ -53,7 +53,6 @@ class server::apache (
 	cron { 'vhost cron monthly':
 		command => "/var/www/cron monthly",
 		user    => $::apache::params::user,
-		minute  => '*',
 		minute  => 24,
 		hour    => 4,
 		day     => 1,
