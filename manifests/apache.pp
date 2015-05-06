@@ -16,6 +16,49 @@ class server::apache (
 		require => Package['httpd'],
 	}
 
+	file { '/var/www/cron':
+		ensure => present,
+		source => 'puppet:///modules/server/cron',
+		owner  => $::apache::params::user,
+		group  => $::apache::params::group,
+	} ->
+
+	cron { 'vhost cron minutely':
+		command => "/var/www/cron minutely",
+		user    => $::apache::params::user,
+		minute  => '*',
+	} ->
+
+	cron { 'vhost cron hourly':
+		command => "/var/www/cron hourly",
+		user    => $::apache::params::user,
+		minute  => 1,
+	} ->
+
+	cron { 'vhost cron daily':
+		command => "/var/www/cron daily",
+		user    => $::apache::params::user,
+		minute  => 2,
+		hour    => 4,
+	} ->
+
+	cron { 'vhost cron weekly':
+		command => "/var/www/cron weekly",
+		user    => $::apache::params::user,
+		minute  => 22,
+		hour    => 4,
+		weekday => 0,
+	} ->
+
+	cron { 'vhost cron monthly':
+		command => "/var/www/cron monthly",
+		user    => $::apache::params::user,
+		minute  => '*',
+		minute  => 24,
+		hour    => 4,
+		day     => 1,
+	}
+
 	include apache::mod::dir
 
 }
