@@ -10,8 +10,9 @@ class server::apache (
 	} -> 
 
 	file_line { 'Apache umask':
-		path => '/etc/apache2/envvars',
-		line => 'umask 002',
+		path   => '/etc/apache2/envvars',
+		line   => 'umask 002',
+		notify => Service['httpd'],
 	}
 
 	include apache::mod::dir
