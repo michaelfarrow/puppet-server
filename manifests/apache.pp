@@ -51,11 +51,11 @@ class server::apache (
 	} ->
 
 	cron { 'vhost cron monthly':
-		command => "/var/www/cron monthly",
-		user    => $::apache::params::user,
-		minute  => 24,
-		hour    => 4,
-		day     => 1,
+		command  => "/var/www/cron monthly",
+		user     => $::apache::params::user,
+		minute   => 24,
+		hour     => 4,
+		monthday => 1,
 	}
 
 	include apache::mod::dir
