@@ -16,7 +16,7 @@ class server::apache (
 		require => Package['httpd'],
 	}
 
-	file { '/etc/www_crong':
+	file { '/etc/www_cron':
 		ensure => present,
 		source => 'puppet:///modules/server/cron',
 		mode   => '0777'
