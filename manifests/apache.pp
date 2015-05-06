@@ -20,26 +20,26 @@ class server::apache (
 		ensure => present,
 		source => 'puppet:///modules/server/cron',
 		mode   => '0777'
-	}
+	} ->
 
 	cron { 'vhost cron minutely':
 		command => "/var/www/cron minutely",
 		user    => $::apache::params::user,
 		minute  => '*',
-	}
+	} ->
 
 	cron { 'vhost cron hourly':
 		command => "/var/www/cron hourly",
 		user    => $::apache::params::user,
 		minute  => 1,
-	}
+	} ->
 
 	cron { 'vhost cron daily':
 		command => "/var/www/cron daily",
 		user    => $::apache::params::user,
 		minute  => 2,
 		hour    => 4,
-	}
+	} ->
 
 	cron { 'vhost cron weekly':
 		command => "/var/www/cron weekly",
@@ -47,7 +47,7 @@ class server::apache (
 		minute  => 22,
 		hour    => 4,
 		weekday => 0,
-	}
+	} ->
 
 	cron { 'vhost cron monthly':
 		command  => "/var/www/cron monthly",
